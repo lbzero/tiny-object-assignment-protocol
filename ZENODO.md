@@ -1,82 +1,89 @@
 # Zenodo release procedure
 
-The order matters: the repository content must be frozen **before** the DOI is
-created, and the DOI must exist **before** the manuscript is submitted. Until both
-are true, the manuscript keeps visible placeholders in the Code Availability
-paragraph, and those placeholders block submission.
+Purpose: turn the frozen repository into a citable object with a DOI, so that the
+Code Availability paragraph of the manuscript can name something permanent instead
+of a GitHub URL that could change.
 
-## 1. Freeze the content
+**The order matters twice over.** The content must be frozen before the DOI exists,
+and — the step people miss — the Zenodo switch must be on *before* the GitHub
+Release is published. Zenodo archives releases that are created while the switch is
+on; a release published before it is simply never seen, and the fix is to publish
+another one.
 
-```bash
-cd 60-paper/repro
-python -m pytest -q                # if tests exist; otherwise skip
-bash tools/make_archive.sh \
-    --traces-a /root/runs/p1/diag \
-    --traces-b /root/runs/p1/diagB \
-    --out dist --version v1.0.0
-```
+## Status of this release
 
-`make_archive.sh` refuses to package any `.png`, `.jpg` or `.pt` file, so imagery
-and weights cannot leak into the archive by accident. Check the printed SHA-256 and
-keep `dist/SHA256SUMS` with the submission records.
+| Item | State |
+|---|---|
+| Repository public | done — https://github.com/lbzero/tiny-object-assignment-protocol |
+| Tag `v1.0.0` pushed | done |
+| Licence | done — AGPL-3.0, in `LICENSE` and in the three metadata files |
+| GitHub Release | **not yet** (deliberately: see the ordering note) |
+| Zenodo DOI | **not yet** — this is the last blocker |
 
-## 2. Create the GitHub repository
+## A. Turn the Zenodo switch on first
 
-```bash
-git init
-git add .
-git commit -m "v1.0.0: diagnostic protocol and traces for the JSTARS submission"
-git branch -M main
-git remote add origin https://github.com/<account>/<repo>.git
-git push -u origin main
-```
+1. Open https://zenodo.org and sign in with **Sign in with GitHub** (top right).
+   Use the same GitHub account that owns the repository (`lbzero`); the integration
+   only sees repositories that account can administer.
+2. Go to https://zenodo.org/account/settings/github/ . If GitHub is not linked yet,
+   press **Connect** and authorise Zenodo to read your public repositories.
+3. Find `lbzero/tiny-object-assignment-protocol` in the list and flip its switch to
+   **ON**. It will be in the "not yet archived" state.
 
-Before pushing, confirm:
+Nothing is published at this point. The switch only says "archive the next release".
 
-- [ ] No `.pt`, no imagery, no prediction dumps, no absolute paths to a private machine.
-- [ ] `README.md` renders and every command in it has been run at least once.
-- [ ] A licence file is present (see §5).
-- [ ] `CITATION.cff` parses (`pip install cffconvert && cffconvert --validate`).
+## B. Publish the GitHub Release
 
-## 3. Tag and release
+1. Open https://github.com/lbzero/tiny-object-assignment-protocol/releases/new
+2. **Choose a tag**: pick the existing `v1.0.0`. Do not create a new tag.
+3. **Release title**: `v1.0.0`.
+4. **Describe this release**: paste the `v1.0.0` section of `CHANGELOG.md`. Two or
+   three sentences is enough; this text becomes part of the archival record.
+5. Leave "Set as the latest release" ticked. Do **not** tick "pre-release".
+6. Press **Publish release**.
 
-```bash
-git tag -a v1.0.0 -m "Version archived with the JSTARS submission"
-git push origin v1.0.0
-```
+Within about a minute, Zenodo receives a webhook and starts archiving.
 
-Create a GitHub Release from the tag, attach `dist/ltnet-repro-v1.0.0.tar.gz` and
-`dist/SHA256SUMS`, and use the CHANGELOG entry as the release notes.
+## C. Collect the DOI
 
-## 4. Archive on Zenodo and obtain the DOI
+1. Reload https://zenodo.org/account/settings/github/ — the repository should now
+   show a DOI badge instead of the switch.
+2. Click through to the record. You will see two DOIs:
+   - **Concept DOI** (`10.5281/zenodo.NNNNNNN`) — always resolves to the newest
+     version. Use it on a project page or in a CV.
+   - **Version DOI** (`10.5281/zenodo.NNNNNNN`) — resolves to v1.0.0 exactly.
+   **The manuscript cites the version DOI**, because a reader must be able to get
+   the code that produced the reported numbers, not a later state.
+3. Send both strings back; the version DOI is the one that goes into the paper.
 
-1. In Zenodo, link the GitHub account and enable archiving for this repository, or
-   upload the tarball as a new record with `.zenodo.json` as metadata.
-2. Reserve a DOI, then publish. Record both the **concept DOI** (all versions) and
-   the **version DOI** (v1.0.0). The manuscript cites the version DOI.
-3. Replace, in this order:
-   - `CITATION.cff` → `identifiers[0].value` and `.zenodo.json` → `related_identifiers`;
-   - the manuscript's Code Availability paragraph: repository URL and DOI.
-4. Re-run `tools/make_archive.sh` only if the payload changed; otherwise the tarball
-   is the one already archived, and the hash in `SHA256SUMS` must still match.
+## D. Fill the three places (done by the assistant, not by hand)
 
-## 5. Licence — decide before the record is created
+| Where | Field | Value |
+|---|---|---|
+| `60-paper/latex/sections/08-discussion.tex` | `\pending{Zenodo DOI}` | version DOI |
+| `CITATION.cff` | `identifiers[0].value` | version DOI |
+| `.zenodo.json` | `related_identifiers` (add a `doi` entry) | version DOI |
 
-The code imports `ultralytics`, which is distributed under AGPL-3.0. Two workable
-options:
+After filling, `grep -c "PLACEHOLDER still in text" main.log` must drop from 3 to 2
+(the remaining two are Funding and Acknowledgements, which are author facts).
 
-- **AGPL-3.0** for this package, matching the dependency. Simplest and safest.
-- **MIT or BSD-3** for the original scripts, with a README note that users must
-  comply with the AGPL when they install and use `ultralytics`. Defensible because
-  the scripts are separate programs, but it requires the note to be explicit.
+## If the Zenodo integration is unavailable
 
-Zenodo requires a licence for software records, so this cannot be deferred past the
-record creation. It is the one decision that is not mine to make.
+The manual route also works and produces the same kind of DOI:
 
-## 6. What must never be published
+1. Build the payload: `bash tools/make_archive.sh --out dist --version v1.0.0`
+   (it refuses to package `.png`, `.jpg`, `.pt`, so imagery and weights cannot leak).
+2. Zenodo → **New upload** → upload `dist/ltnet-repro-v1.0.0.tar.gz` → the
+   `.zenodo.json` in the repository is used as metadata if you paste it into the
+   "Metadata" form, or fill the form by hand from it.
+3. Reserve a DOI, then publish.
+4. Note that the archived object is then the tarball, not the repository; the
+   concept/version distinction is the same.
 
-- AI-TODv2 imagery, in whole or in part, including crops used for case figures.
-  Case figures in the paper are derived from the benchmark; check its terms before
-  releasing the figure-generating script's output.
-- Prediction dumps and checkpoints, unless the benchmark terms allow it.
+## What must never be published
+
+- AI-TODv2 imagery, in whole or in part, including the crops behind the case figure.
+  The benchmark's own terms govern redistribution; check them before releasing any
+  figure-generating output.
+- Prediction dumps and checkpoints, unless those terms allow it.
 - Any file containing a personal path, an account name, or a token.
