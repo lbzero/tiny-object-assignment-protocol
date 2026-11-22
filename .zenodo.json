@@ -23,7 +23,7 @@
   "related_identifiers": [
     {
       "relation": "isSupplementTo",
-      "identifier": "REPOSITORY_URL",
+      "identifier": "https://github.com/lbzero/tiny-object-assignment-protocol",
       "scheme": "url"
     }
   ]
