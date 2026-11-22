@@ -394,15 +394,25 @@ bookkeeping, the static-proxy audit, the subset construction) are small enough t
 re-express independently; the scripts are provided so that you can read what they
 do rather than only run them.
 
-## 11. Known placeholders in this version
+## 11. How to cite
 
-One value is intentionally not filled, because inventing it would be worse than
-leaving it visibly empty:
+Cite the archived version, not the repository URL, so that the reference keeps
+resolving after the repository changes:
 
-| Where | Placeholder | Filled when |
-|---|---|---|
-| `CITATION.cff`, `.zenodo.json` | `10.5281/zenodo.PLACEHOLDER` | the Zenodo record is created |
-| manuscript Code Availability | `[Zenodo DOI]` | same |
+```bibtex
+@software{liu_ltnet_2026,
+  author    = {Liu, Bing},
+  title     = {Auditable diagnostic protocol for tiny-object label assignment},
+  year      = {2026},
+  version   = {1.0.0},
+  doi       = {10.5281/zenodo.24442262},
+  url       = {https://github.com/lbzero/tiny-object-assignment-protocol}
+}
+```
 
-The repository URL is already filled in both places.
-`SUBMISSION_CHECKLIST.md` §1 lists the remaining item as blocking.
+`10.5281/zenodo.24442262` is the **version DOI** for v1.0.0.
+`10.5281/zenodo.24442261` is the **concept DOI**, which always resolves to the newest
+version; cite it only when the exact version does not matter.
+
+This file, `CITATION.cff` and the Zenodo metadata all carry the same version DOI. No
+placeholder remains in the package.

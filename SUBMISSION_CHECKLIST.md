@@ -18,6 +18,11 @@ Ordered by whether it blocks submission. Nothing here is optional; the two items
 - [ ] **No placeholder text anywhere** in `jstars/main.pdf`:
       `grep -n "TODO\|to be completed\|repository URL\|Zenodo DOI" 60-paper/latex/*.tex 60-paper/latex/sections/*.tex`
 
+- [x] **Zenodo record exists and the DOI is cited**: version DOI
+      `10.5281/zenodo.24442262` (concept `10.5281/zenodo.24442261`). Filled in the
+      manuscript, `CITATION.cff` and `README.md`. Note the archived v1.0.0 still
+      contains `zenodo.PLACEHOLDER` inside `CITATION.cff`, because a DOI cannot be
+      known before archiving; a v1.0.1 would remove it.
 - [ ] **No `\pending{}` left.** Every placeholder is wrapped in one macro that emits a
       build warning, so the log names each one:
       `grep -c "PLACEHOLDER still in text" jstars/main.log` must be 0

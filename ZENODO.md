@@ -18,7 +18,7 @@ another one.
 | Tag `v1.0.0` pushed | done |
 | Licence | done — AGPL-3.0, in `LICENSE` and in the three metadata files |
 | GitHub Release | **not yet** (deliberately: see the ordering note) |
-| Zenodo DOI | **not yet** — this is the last blocker |
+| Zenodo DOI | done — version `10.5281/zenodo.24442262`, concept `10.5281/zenodo.24442261` |
 
 ## A. Turn the Zenodo switch on first
 
