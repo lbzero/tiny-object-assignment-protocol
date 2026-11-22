@@ -8,9 +8,11 @@ Ordered by whether it blocks submission. Nothing here is optional; the two items
 - [ ] **Zenodo DOI exists** and the manuscript's Code Availability paragraph cites it.
       Currently the paragraph contains literal placeholders: `[repository URL]` and
       `[Zenodo DOI]`. A PDF containing them must not be submitted.
-- [ ] **GitHub repository is public** and the tag `v1.0.0` matches the release.
-- [ ] **Licence decided** for the code package (`repro/ZENODO.md` §5). Zenodo will
-      not create a software record without one.
+- [x] **GitHub repository is public** and the tag `v1.0.0` matches the release.
+      https://github.com/lbzero/tiny-object-assignment-protocol (tag moved to the
+      licence commit on 2026-11-22; GitHub reports AGPL-3.0).
+- [x] **Licence decided**: AGPL-3.0, because the code imports Ultralytics YOLO.
+      Declared in `LICENSE`, `CITATION.cff`, `.zenodo.json` and Section VIII.
 - [ ] **Funding and Acknowledgements** filled in, or the paragraphs removed.
       Currently marked `[to be completed]`.
 - [ ] **No placeholder text anywhere** in `jstars/main.pdf`:
