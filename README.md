@@ -380,14 +380,29 @@ payload with `tools/make_archive.sh`, push the repository, tag `v1.0.0`, create 
 GitHub release, archive that release on Zenodo, and only then insert the URL and
 DOI into the manuscript. The tool refuses to package `.png`, `.jpg` or `.pt` files.
 
-## 10. Known placeholders in this version
+## 10. License
 
-Two values are intentionally not filled, because inventing them would be worse than
-leaving them visibly empty:
+This package is released under the **GNU Affero General Public License v3.0**
+(AGPL-3.0); the full text is in `LICENSE`. The choice is deliberate rather than
+incidental: the code instruments and imports Ultralytics YOLO, which is distributed
+under AGPL-3.0, and a permissive licence here would misrepresent what a downstream
+user is actually bound by.
+
+If you reuse the analysis code in a work that cannot carry AGPL — for example a
+closed-source product — the parts that do not derive from Ultralytics (the tracing
+bookkeeping, the static-proxy audit, the subset construction) are small enough to
+re-express independently; the scripts are provided so that you can read what they
+do rather than only run them.
+
+## 11. Known placeholders in this version
+
+One value is intentionally not filled, because inventing it would be worse than
+leaving it visibly empty:
 
 | Where | Placeholder | Filled when |
 |---|---|---|
-| `CITATION.cff`, `.zenodo.json` | `10.5281/zenodo.PLACEHOLDER`, `REPOSITORY_URL` | the Zenodo record is created |
-| manuscript Code Availability | `[repository URL]`, `[Zenodo DOI]` | same |
+| `CITATION.cff`, `.zenodo.json` | `10.5281/zenodo.PLACEHOLDER` | the Zenodo record is created |
+| manuscript Code Availability | `[Zenodo DOI]` | same |
 
-`SUBMISSION_CHECKLIST.md` §1 lists these as blocking.
+The repository URL is already filled in both places.
+`SUBMISSION_CHECKLIST.md` §1 lists the remaining item as blocking.
