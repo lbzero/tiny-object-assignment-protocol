@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "diag_dir": "/root/runs/p1/diag",
+    "subset": "A",
+    "bucket": "verytiny",
+    "n_images": 500,
+    "B": 2000,
+    "seed": 20261121,
+    "unit": "image (resampled with replacement, within-image structure kept)",
+    "seeds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "note": "Percentile bootstrap over images, common resampling across cells and seeds to preserve pairing. Intervals describe image-sampling uncertainty only."
+  },
+  "cells": {
+    "E0_ciou": {
+      "per_seed": [
+        4.529,
+        4.176,
+        3.824,
+        4.059
+      ],
+      "mean": 4.147,
+      "ci95": [
+        1.917,
+        6.101
+      ]
+    },
+    "E0_nwd": {
+      "per_seed": [
+        3.118,
+        2.647,
+        2.588,
+        2.706
+      ],
+      "mean": 2.765,
+      "ci95": [
+        0.87,
+        4.794
+      ]
+    },
+    "NWD_ciou": {
+      "per_seed": [
+        5.941,
+        5.824,
+        6.294,
+        5.824
+      ],
+      "mean": 5.971,
+      "ci95": [
+        3.364,
+        8.08
+      ]
+    },
+    "NWD_nwd": {
+      "per_seed": [
+        4.294,
+        4.118,
+        4.059,
+        4.176
+      ],
+      "mean": 4.162,
+      "ci95": [
+        1.729,
+        6.476
+      ]
+    }
+  },
+  "contrasts": {
+    "interface_nwd_minus_ciou_at_E0": {
+      "per_seed": [
+        -1.412,
+        -1.529,
+        -1.235,
+        -1.353
+      ],
+      "mean": -1.382,
+      "ci95": [
+        -2.703,
+        -0.564
+      ]
+    },
+    "weight_effect_ciou_NWD_minus_E0": {
+      "per_seed": [
+        1.412,
+        1.647,
+        2.471,
+        1.765
+      ],
+      "mean": 1.824,
+      "ci95": [
+        1.004,
+        2.316
+      ]
+    },
+    "weight_effect_nwd_NWD_minus_E0": {
+      "per_seed": [
+        1.176,
+        1.471,
+        1.471,
+        1.471
+      ],
+      "mean": 1.397,
+      "ci95": [
+        0.734,
+        1.828
+      ]
+    },
+    "interaction": {
+      "per_seed": [
+        -0.235,
+        -0.176,
+        -1.0,
+        -0.294
+      ],
+      "mean": -0.426,
+      "ci95": [
+        -0.809,
+        0.0
+      ]
+    }
+  }
+}

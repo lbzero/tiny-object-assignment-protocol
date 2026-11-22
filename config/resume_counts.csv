@@ -1,0 +1,9 @@
+﻿run,seed,trainer_starts,resumes,note
+E0_default_s0,0,6,5,
+E0_default_s1,1,8,7,
+E0_default_s2,2,3,2,
+E0_default_s3,3,3,0,two aborted starts before any checkpoint; analysed run is a single 100-epoch pass
+NWD_nwd_s0,0,1,0,single pass
+NWD_nwd_s1,1,2,1,
+NWD_nwd_s2,2,2,1,
+NWD_nwd_s3,3,1,0,single pass

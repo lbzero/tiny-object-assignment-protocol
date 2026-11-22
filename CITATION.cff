@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: If you use this diagnostic protocol or the accompanying traces, please cite both the paper and this archived release.
+title: "Auditable diagnostic protocol for tiny-object label assignment"
+abstract: >-
+  Read-only instrumentation of a task-aligned assigner, per-ground-truth traces of
+  the four assignment stages, a static-proxy audit, a 2x2 weight/similarity design,
+  and the analysis scripts that regenerate every table and figure of the paper.
+type: software
+version: 1.0.0
+date-released: "2026-11-21"
+authors:
+  - family-names: Liu
+    given-names: Bing
+    affiliation: "School of UAV Industry, Chengdu Aeronautic Polytechnic University, Chengdu, China"
+    orcid: "https://orcid.org/0009-0008-2835-6822"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.PLACEHOLDER"
+    description: "Zenodo DOI of this release (to be inserted when the record is created)"
+keywords:
+  - tiny object detection
+  - label assignment
+  - task-aligned assignment
+  - normalized Wasserstein distance
+  - reproducibility

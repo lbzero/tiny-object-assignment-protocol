@@ -1,0 +1,240 @@
+{
+  "design": {
+    "method": "dominant-size-bucket strata + systematic sampling within stratum, members sorted by (visible GT count, dominant category, image id)",
+    "stratify_var": "dominant_bucket",
+    "within_stratum_order": [
+      "n_gt_visible",
+      "dominant_category_id",
+      "image_id"
+    ],
+    "seed": 20261121,
+    "n_requested": 500,
+    "n_drawn": 500,
+    "excluded_subset_A": 500,
+    "n_strata": 3,
+    "quota_by_bucket": {
+      "verytiny": 64,
+      "tiny": 429,
+      "small": 7,
+      "medium": 0
+    },
+    "stratum_sizes": {
+      "verytiny": 295,
+      "tiny": 1977,
+      "small": 30,
+      "medium": 2
+    },
+    "unmet_quota": {},
+    "pool_size": 2304,
+    "pool_empty_images_excluded": 0,
+    "note": "Systematic sampling inside size strata makes the sample empirical quantiles track the population closely (implicit stratification). It balances size composition and target density; it does not guarantee scene-level representativeness."
+  },
+  "gt_totals": {
+    "full_val_visible_gt": 75065,
+    "full_val_official_gt": 75091,
+    "subset_A_visible_gt": 12184,
+    "subset_B_visible_gt": 14089
+  },
+  "descriptions": [
+    {
+      "label": "subset_A",
+      "n_images": 500,
+      "n_gt_visible": 12184,
+      "gt_per_image_mean": 24.368,
+      "gt_per_image_sd": 49.947473170845235,
+      "gt_per_image_p50": 4.0,
+      "gt_diameter_mean": 12.86884316439618,
+      "bucket_gt_share_pct": {
+        "verytiny": 13.95,
+        "tiny": 73.15,
+        "small": 11.17,
+        "medium": 1.73
+      },
+      "bucket_gt_count": {
+        "verytiny": 1700,
+        "tiny": 8912,
+        "small": 1361,
+        "medium": 211
+      },
+      "empty_image_share_pct": 0.0,
+      "category_gt_share_pct": {
+        "0": 0.24,
+        "1": 0.26,
+        "2": 4.51,
+        "3": 3.67,
+        "4": 0.14,
+        "5": 87.17,
+        "6": 3.88,
+        "7": 0.12
+      },
+      "image_wh_unique": [
+        [
+          800,
+          800
+        ]
+      ]
+    },
+    {
+      "label": "subset_B",
+      "n_images": 500,
+      "n_gt_visible": 14089,
+      "gt_per_image_mean": 28.178,
+      "gt_per_image_sd": 64.0422449190262,
+      "gt_per_image_p50": 4.0,
+      "gt_diameter_mean": 13.234889320721315,
+      "bucket_gt_share_pct": {
+        "verytiny": 14.21,
+        "tiny": 70.74,
+        "small": 13.23,
+        "medium": 1.82
+      },
+      "bucket_gt_count": {
+        "verytiny": 2002,
+        "tiny": 9967,
+        "small": 1864,
+        "medium": 256
+      },
+      "empty_image_share_pct": 0.0,
+      "category_gt_share_pct": {
+        "0": 0.13,
+        "1": 0.23,
+        "2": 6.0,
+        "3": 6.27,
+        "4": 0.34,
+        "5": 84.06,
+        "6": 2.98
+      },
+      "image_wh_unique": [
+        [
+          800,
+          799
+        ],
+        [
+          800,
+          800
+        ]
+      ]
+    },
+    {
+      "label": "pool_minus_A",
+      "n_images": 2304,
+      "n_gt_visible": 62881,
+      "gt_per_image_mean": 27.292100694444443,
+      "gt_per_image_sd": 59.6320109761362,
+      "gt_per_image_p50": 4.0,
+      "gt_diameter_mean": 13.154128873225034,
+      "bucket_gt_share_pct": {
+        "verytiny": 14.0,
+        "tiny": 72.4,
+        "small": 11.94,
+        "medium": 1.67
+      },
+      "bucket_gt_count": {
+        "verytiny": 8801,
+        "tiny": 45523,
+        "small": 7509,
+        "medium": 1048
+      },
+      "empty_image_share_pct": 0.0,
+      "category_gt_share_pct": {
+        "0": 0.24,
+        "1": 0.19,
+        "2": 3.31,
+        "3": 5.39,
+        "4": 0.15,
+        "5": 85.25,
+        "6": 5.39,
+        "7": 0.09
+      },
+      "image_wh_unique": [
+        [
+          800,
+          799
+        ],
+        [
+          800,
+          800
+        ]
+      ]
+    },
+    {
+      "label": "full_val",
+      "n_images": 2804,
+      "n_gt_visible": 75065,
+      "gt_per_image_mean": 26.770684736091297,
+      "gt_per_image_sd": 58.026183856472656,
+      "gt_per_image_p50": 4.0,
+      "gt_diameter_mean": 13.103257669796209,
+      "bucket_gt_share_pct": {
+        "verytiny": 13.99,
+        "tiny": 72.52,
+        "small": 11.82,
+        "medium": 1.68
+      },
+      "bucket_gt_count": {
+        "verytiny": 10501,
+        "tiny": 54435,
+        "small": 8870,
+        "medium": 1259
+      },
+      "empty_image_share_pct": 0.0,
+      "category_gt_share_pct": {
+        "0": 0.24,
+        "1": 0.2,
+        "2": 3.5,
+        "3": 5.11,
+        "4": 0.15,
+        "5": 85.56,
+        "6": 5.14,
+        "7": 0.09
+      },
+      "image_wh_unique": [
+        [
+          800,
+          799
+        ],
+        [
+          800,
+          800
+        ]
+      ]
+    }
+  ],
+  "balance": {
+    "A_vs_B": {
+      "n_gt_visible": -0.0663,
+      "gt_area_mean": -0.0589,
+      "gt_diameter_mean": -0.0849
+    },
+    "B_vs_full": {
+      "n_gt_visible": 0.023,
+      "gt_area_mean": 0.01,
+      "gt_diameter_mean": 0.0295
+    },
+    "A_vs_full": {
+      "n_gt_visible": -0.0444,
+      "gt_area_mean": -0.0477,
+      "gt_diameter_mean": -0.0543
+    },
+    "bucket_share_diff_pp": {
+      "A_vs_full": {
+        "verytiny": -0.04,
+        "tiny": 0.63,
+        "small": -0.65,
+        "medium": 0.05
+      },
+      "B_vs_full": {
+        "verytiny": 0.22,
+        "tiny": -1.78,
+        "small": 1.41,
+        "medium": 0.14
+      },
+      "A_vs_B": {
+        "verytiny": -0.26,
+        "tiny": 2.41,
+        "small": -2.06,
+        "medium": -0.09
+      }
+    }
+  }
+}

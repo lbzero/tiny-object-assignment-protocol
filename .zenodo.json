@@ -1,0 +1,30 @@
+{
+  "title": "Auditable diagnostic protocol for tiny-object label assignment",
+  "upload_type": "software",
+  "description": "Read-only instrumentation of a task-aligned assigner, per-ground-truth traces of the four assignment stages (S1-S4) with identity checks, a static-proxy audit, a 2x2 weight/similarity design on AI-TODv2 with YOLO11s, and the analysis scripts that regenerate every table and figure of the paper. Companion to the manuscript submitted to IEEE JSTARS.",
+  "creators": [
+    {
+      "name": "Liu, Bing",
+      "affiliation": "School of UAV Industry, Chengdu Aeronautic Polytechnic University, Chengdu, China",
+      "orcid": "0009-0008-2835-6822"
+    }
+  ],
+  "keywords": [
+    "tiny object detection",
+    "label assignment",
+    "task-aligned assignment",
+    "normalized Wasserstein distance",
+    "AI-TODv2",
+    "reproducibility"
+  ],
+  "access_right": "open",
+  "publication_date": "2026-11-21",
+  "version": "1.0.0",
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "REPOSITORY_URL",
+      "scheme": "url"
+    }
+  ]
+}

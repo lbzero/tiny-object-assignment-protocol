@@ -1,0 +1,9 @@
+arm,seed,run,resumed,best_epoch,diag_ckpt,diag_sha256_16,n_images,n_gt_rows,topk,alpha,beta,nwd_C,similarity,ultralytics
+E0,0,E0_default_s0,yes,100,epoch60.pt,b57a4810a7fc24a6,500,12184,10,0.5,6.0,,ciou,8.4.197
+E0,1,E0_default_s1,yes,100,epoch60.pt,ed6f4f0d77799c76,500,12184,10,0.5,6.0,,ciou,8.4.197
+E0,2,E0_default_s2,yes,100,epoch60.pt,411ad24d5dd4383a,500,12184,10,0.5,6.0,,ciou,8.4.197
+E0,3,E0_default_s3,no,95,epoch60.pt,f2ffa772dcc4d368,500,12184,10,0.5,6.0,,ciou,8.4.197
+NWD,0,NWD_nwd_s0,no,100,epoch60.pt,013f13c7ea6d6a51,500,12184,10,0.5,6.0,12.8,nwd,8.4.197
+NWD,1,NWD_nwd_s1,yes,88,epoch60.pt,ad089e5c05649adc,500,12184,10,0.5,6.0,12.8,nwd,8.4.197
+NWD,2,NWD_nwd_s2,yes,100,epoch60.pt,392e973cb4ee3731,500,12184,10,0.5,6.0,12.8,nwd,8.4.197
+NWD,3,NWD_nwd_s3,no,100,epoch60.pt,2078e63b21c6c94e,500,12184,10,0.5,6.0,12.8,nwd,8.4.197
